@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="87dp"
-        android:backgroundTint="#413C58"
+        android:backgroundTint="#3E92CC"
         android:clickable="true"
         app:backgroundTint="#12664F"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,8 +40,8 @@
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#12664F"
-        android:backgroundTint="#12664F"
+        android:background="#13293d"
+        android:backgroundTint="#13293D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#307473">
+                android:background="#2a628f">
 
                 <com.google.android.material.progressindicator.LinearProgressIndicator
                     android:id="@+id/linearProgressIndicator2"
@@ -73,13 +73,25 @@
                     android:layout_marginStart="22dp"
                     android:layout_marginEnd="22dp"
                     android:layout_marginBottom="16dp"
-                    android:indeterminate="false"
 
-                    app:trackThickness="10dp"
-                    app:trackCornerRadius="5dp"
+                    android:foregroundTint="#3E92CC"
+                    android:indeterminate="true"
+                    android:indeterminateTint="#000000"
+                    android:progress="50"
+                    android:progressTint="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:trackColor="#3E92CC"
+                    app:trackCornerRadius="5dp"
+                    app:trackThickness="10dp" />
+
+                <WebView
+                    android:id="@+id/web_view"
+                    android:layout_width="344dp"
+                    android:layout_height="169dp"
+                    tools:layout_editor_absoluteX="10dp"
+                    tools:layout_editor_absoluteY="16dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
