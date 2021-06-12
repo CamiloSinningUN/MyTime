@@ -4,44 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#12664F"
+    android:backgroundTint="#12664F"
     tools:context=".MainActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="169dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="245dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status" />
-
-    <ImageView
-        android:id="@+id/status"
-        android:layout_width="170dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="275dp"
-        android:layout_marginBottom="192dp"
-        app:layout_constraintBottom_toTopOf="@+id/play"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/status_foreground" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/play"
+        android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="58dp"
-        android:backgroundTint="#FFC107"
+        android:layout_marginBottom="87dp"
+        android:backgroundTint="#413C58"
         android:clickable="true"
-        app:backgroundTint="#009688"
+        app:backgroundTint="#12664F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status"
-        app:maxImageSize="30dp"
         app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#12664F"
+        android:backgroundTint="#12664F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="365dp"
+            android:layout_height="237dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="23dp"
+            android:background="#307473"
+            android:elevation="5dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#307473">
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/linearProgressIndicator2"
+                    android:layout_width="0dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="16dp"
+                    android:indeterminate="false"
+
+                    app:trackThickness="10dp"
+                    app:trackCornerRadius="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
