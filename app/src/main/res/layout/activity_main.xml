@@ -15,7 +15,6 @@
         android:layout_marginBottom="90dp"
         android:backgroundTint="#3E92CC"
         android:clickable="true"
-        app:backgroundTint="#12664F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
