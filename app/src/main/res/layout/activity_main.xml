@@ -59,7 +59,6 @@
                     android:layout_marginBottom="16dp"
                     android:foregroundTint="#3E92CC"
                     android:indeterminateTint="#000000"
-                    android:progress="0"
                     android:progressTint="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +83,6 @@
                         android:layout_height="10dp"
                         android:layout_marginEnd="15dp"
                         android:indeterminate="false"
-                        android:progress="100"
                         app:trackCornerRadius="30dp"
                         app:trackThickness="10dp" />
 
@@ -94,7 +92,6 @@
                         android:layout_height="10dp"
                         android:layout_marginEnd="15dp"
                         android:indeterminate="false"
-                        android:progress="100"
                         app:trackCornerRadius="30dp"
                         app:trackThickness="10dp" />
 
@@ -104,7 +101,6 @@
                         android:layout_height="10dp"
                         android:layout_marginEnd="15dp"
                         android:indeterminate="false"
-                        android:progress="100"
                         app:trackCornerRadius="30dp"
                         app:trackThickness="10dp" />
 
@@ -113,7 +109,6 @@
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:indeterminate="false"
-                        android:progress="100"
                         app:trackCornerRadius="30dp"
                         app:trackThickness="10dp" />
                 </TableRow>
