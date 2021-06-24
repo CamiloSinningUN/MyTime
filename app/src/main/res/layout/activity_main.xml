@@ -2,26 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraint_layout"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#12664F"
     android:textAlignment="center"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="255dp"
@@ -45,7 +34,7 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/my_toolbar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardViewLayout"
@@ -54,7 +43,7 @@
             android:background="#2a628f">
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/linearProgressIndicator2"
+                android:id="@+id/linearProgressIndicator"
                 android:layout_width="309dp"
                 android:layout_height="15dp"
                 android:layout_marginStart="22dp"
@@ -64,7 +53,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/webViewCardView"
                 app:trackCornerRadius="5dp"
                 app:trackThickness="10dp" />
 
@@ -72,12 +61,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"
                 android:layout_marginBottom="15dp"
-                app:layout_constraintBottom_toTopOf="@id/linearProgressIndicator2"
-                app:layout_constraintEnd_toEndOf="@id/linearProgressIndicator2"
-                app:layout_constraintStart_toStartOf="@id/linearProgressIndicator2">
+                app:layout_constraintBottom_toTopOf="@id/linearProgressIndicator"
+                app:layout_constraintEnd_toEndOf="@id/linearProgressIndicator"
+                app:layout_constraintStart_toStartOf="@id/linearProgressIndicator">
 
                 <com.google.android.material.progressindicator.LinearProgressIndicator
-                    android:id="@+id/progressBar5"
+                    android:id="@+id/rest1"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:layout_marginEnd="15dp"
@@ -86,7 +75,7 @@
                     app:trackThickness="10dp" />
 
                 <com.google.android.material.progressindicator.LinearProgressIndicator
-                    android:id="@+id/progressBar6"
+                    android:id="@+id/rest2"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:layout_marginEnd="15dp"
@@ -95,7 +84,7 @@
                     app:trackThickness="10dp" />
 
                 <com.google.android.material.progressindicator.LinearProgressIndicator
-                    android:id="@+id/progressBar7"
+                    android:id="@+id/rest3"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:layout_marginEnd="15dp"
@@ -104,7 +93,7 @@
                     app:trackThickness="10dp" />
 
                 <com.google.android.material.progressindicator.LinearProgressIndicator
-                    android:id="@+id/progressBar8"
+                    android:id="@+id/rest4"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:indeterminate="false"
@@ -113,7 +102,7 @@
             </TableRow>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
+                android:id="@+id/webViewCardView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="18dp"
@@ -121,7 +110,7 @@
                 android:layout_marginEnd="18dp"
                 android:layout_marginBottom="43dp"
                 app:cardCornerRadius="10dp"
-                app:layout_constraintBottom_toTopOf="@+id/linearProgressIndicator2"
+                app:layout_constraintBottom_toTopOf="@+id/linearProgressIndicator"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -131,9 +120,9 @@
                     android:layout_height="match_parent">
 
                     <WebView
-                        android:id="@+id/web_view"
-                        android:layout_width="0dp"
-                        android:layout_height="182dp"
+                        android:id="@+id/webView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         app:layout_constraintBaseline_toBaselineOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -157,7 +146,7 @@
         app:layout_constraintTop_toBottomOf="@id/cardView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/status"
+            android:id="@+id/statusCardView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
