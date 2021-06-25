@@ -1,17 +1,23 @@
 package com.example.mytime
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.View
+import android.view.ViewAnimationUtils
 import android.view.WindowManager
 import android.webkit.WebView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -29,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         lateinit var textStatus: TextView
         lateinit var restArray: ArrayList<LinearProgressIndicator>
         lateinit var fab: FloatingActionButton
+        lateinit var anim: CardView
         lateinit var activityReference: Activity
 
         fun sendNotification(context: Context,notificationTitle:String,notificationText:String){
@@ -44,7 +51,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
     lateinit var user:User
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         linearIndicator = findViewById(R.id.linearProgressIndicator)
         textStatus = findViewById(R.id.textView)
         cardViewLayoutStatus = findViewById(R.id.statusCardView)
+        anim = findViewById(R.id.anim)
         activityReference = this
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         restArray = ArrayList(4)
@@ -91,7 +98,9 @@ class MainActivity : AppCompatActivity() {
         restArray.add(findViewById(R.id.rest4))
         createNotificationChannel()
         user = User(this)
-        user.setInactiveState()
+        user.myState = State.Inactive
+        Theme.gifInactive(webView)
+        window.statusBarColor = Color.parseColor("#1C1519")
     }
 
     private fun areYouSureToStop() {

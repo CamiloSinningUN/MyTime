@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#12664F"
+    android:background="#1C1519"
     android:textAlignment="center"
     tools:context=".MainActivity">
 
@@ -24,6 +24,13 @@
         app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/anim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="invisible"/>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="356dp"
         android:layout_height="278dp"
@@ -40,7 +47,7 @@
             android:id="@+id/cardViewLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#2a628f">
+            android:background="#454545">
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/linearProgressIndicator"
@@ -148,7 +155,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/statusCardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#454545">
 
             <TextView
                 android:id="@+id/textView"
@@ -158,7 +166,7 @@
                 android:fontFamily="casual"
                 android:text="Inactivo"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="#CED0CE"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -1,11 +1,17 @@
 package com.example.mytime
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.graphics.Color
+import android.view.View
+import android.view.ViewAnimationUtils
 import android.webkit.WebView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.mytime.MainActivity.Companion.fab
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 class Theme {
     companion object {
@@ -84,12 +90,32 @@ class Theme {
             cardViewLayoutStatus: ConstraintLayout,
             textStatus: TextView
         ) {
-            activityReference.window.statusBarColor = windowColor
-            layout.setBackgroundColor(layoutColor)
-            cardViewLayout.setBackgroundColor(cardViewLayoutColor)
-            cardViewLayoutStatus.setBackgroundColor(cardViewLayoutStatusColor)
-            textStatus.setTextColor(textColor)
-            textStatus.setText(text)
+            val cx = MainActivity.anim.width / 2
+            val cy = MainActivity.anim.height / 2
+            val finalRadius = Math.hypot(cx.toDouble(), cy.toDouble()).toFloat()
+            val anim = ViewAnimationUtils.createCircularReveal(MainActivity.anim,
+                fab.x.toInt() + fab.width/2, fab.y.toInt() + fab.height/2, 0f, finalRadius)
+            anim.setDuration(150)
+            MainActivity.anim.visibility = View.VISIBLE
+
+            anim.addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationStart(animation: Animator?) {
+                    super.onAnimationStart(animation)
+                    cardViewLayout.setBackgroundColor(cardViewLayoutColor)
+                    cardViewLayoutStatus.setBackgroundColor(cardViewLayoutStatusColor)
+                    textStatus.setTextColor(textColor)
+                    textStatus.setText(text)
+                    MainActivity.anim.setCardBackgroundColor(layoutColor)
+                }
+                override fun onAnimationEnd(animation: Animator) {
+                    super.onAnimationEnd(animation)
+                    MainActivity.anim.visibility = View.INVISIBLE
+                    activityReference.window.statusBarColor = windowColor
+                    layout.setBackgroundColor(layoutColor)
+
+                }
+            })
+            anim.start()
         }
 
 

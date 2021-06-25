@@ -1,7 +1,11 @@
 package com.example.mytime
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.os.CountDownTimer
+import android.view.View
+import android.view.ViewAnimationUtils
 import androidx.core.view.isVisible
 import com.example.mytime.MainActivity.Companion.activityReference
 import com.example.mytime.MainActivity.Companion.cardViewLayout
@@ -25,9 +29,7 @@ class User(context: Context) : Person(context) {
     override fun setInactiveState() {
         myState = State.Inactive
         Theme.inactive(activityReference,layout,cardViewLayout,cardViewLayoutStatus,textStatus,fab,webView)
-        if(myState == State.Studying || myState == State.Resting){
-            reset()
-        }
+        reset()
     }
 
     override fun setStudyingState() {
