@@ -1,7 +1,5 @@
 package com.example.mytime
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.NotificationChannel
@@ -10,9 +8,8 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.view.View
-import android.view.ViewAnimationUtils
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.WindowManager
 import android.webkit.WebView
 import android.widget.EditText
@@ -25,10 +22,11 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import java.io.*
 
 
 class MainActivity : AppCompatActivity() {
-    companion object{
+    companion object {
         lateinit var webView: WebView
         lateinit var layout: ConstraintLayout
         lateinit var cardViewLayout: ConstraintLayout
@@ -43,7 +41,11 @@ class MainActivity : AppCompatActivity() {
         lateinit var notestext: TextView
         lateinit var activityReference: Activity
 
-        fun sendNotification(context: Context,notificationTitle:String,notificationText:String){
+        fun sendNotification(
+            context: Context,
+            notificationTitle: String,
+            notificationText: String
+        ) {
             var builder = NotificationCompat.Builder(context, "My notification")
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle(notificationTitle)
@@ -56,12 +58,25 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    lateinit var user:User
+
+    lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initialize()
+
+        textArea.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                saveNote(s.toString())
+            }
+        })
 
         fab.setOnClickListener {
             if (user.myState == State.Inactive) {
@@ -96,6 +111,7 @@ class MainActivity : AppCompatActivity() {
         notes = findViewById(R.id.notes)
         notestext = findViewById(R.id.textView2)
         textArea = findViewById(R.id.shipper_field)
+        textArea.setText(readNote())
         anim = findViewById(R.id.anim)
         activityReference = this
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -123,8 +139,56 @@ class MainActivity : AppCompatActivity() {
         builder.show()
     }
 
+    fun saveNote(text: String) {
+        var fos: FileOutputStream? = null
+        try {
+            fos = this.openFileOutput("notas.txt", MODE_PRIVATE)
+            fos.write(text.toByteArray())
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
 
-
-
+    fun readNote(): String {
+        var fis: FileInputStream? = null
+        var result = ""
+        try {
+            fis = this.openFileInput("notas.txt")
+            val isr = InputStreamReader(fis)
+            val br = BufferedReader(isr)
+            val sb = StringBuilder()
+            var text: String?
+            text = br.readLine()
+            if (text != null) {
+                while (text != null) {
+                    result = result + text + "\n"
+                    text = br.readLine()
+                }
+            }
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        return result
+    }
 
 }
