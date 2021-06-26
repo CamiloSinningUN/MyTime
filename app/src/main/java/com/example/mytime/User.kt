@@ -1,19 +1,8 @@
 package com.example.mytime
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.os.CountDownTimer
-import android.view.View
-import android.view.ViewAnimationUtils
 import androidx.core.view.isVisible
-import com.example.mytime.MainActivity.Companion.activityReference
-import com.example.mytime.MainActivity.Companion.cardViewLayout
-import com.example.mytime.MainActivity.Companion.cardViewLayoutStatus
-import com.example.mytime.MainActivity.Companion.fab
-import com.example.mytime.MainActivity.Companion.textStatus
-import com.example.mytime.MainActivity.Companion.webView
-import com.example.mytime.MainActivity.Companion.layout
 import com.example.mytime.MainActivity.Companion.linearIndicator
 import com.example.mytime.MainActivity.Companion.restArray
 import com.example.mytime.MainActivity.Companion.sendNotification
@@ -22,19 +11,19 @@ class User(context: Context) : Person(context) {
     //var myFriends: ArrayList<Friend>
     lateinit var myTimer: CountDownTimer
     var timerLength:Long = 1500
-    val restDuration:Long = 2//300
-    val studyDuration:Long = 3//1500
+    val restDuration:Long = 300
+    val studyDuration:Long = 1500
     var restTimes = 0
 
     override fun setInactiveState() {
         myState = State.Inactive
-        Theme.inactive(activityReference,layout,cardViewLayout,cardViewLayoutStatus,textStatus,fab,webView)
+        Theme.inactive()
         reset()
     }
 
     override fun setStudyingState() {
         myState = State.Studying
-        Theme.study(activityReference,layout,cardViewLayout,cardViewLayoutStatus,textStatus,fab,webView)
+        Theme.study()
         putLinearIndicatorIndeterminate(false)
         timerLength = studyDuration
         sendNotification(context, "Estudia apura", "Ha comenzado la estudiacion")
@@ -43,7 +32,7 @@ class User(context: Context) : Person(context) {
 
     override fun setRestingState() {
         myState = State.Resting
-        Theme.rest(activityReference,layout,cardViewLayout,cardViewLayoutStatus,textStatus,fab,webView)
+        Theme.rest()
         restTimes += 1
         myTimer.cancel()
         var notificationText:String

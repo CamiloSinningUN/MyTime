@@ -9,92 +9,68 @@ import android.view.ViewAnimationUtils
 import android.webkit.WebView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.mytime.MainActivity.Companion.activityReference
+import com.example.mytime.MainActivity.Companion.cardViewLayout
+import com.example.mytime.MainActivity.Companion.cardViewLayoutStatus
 import com.example.mytime.MainActivity.Companion.fab
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.mytime.MainActivity.Companion.notes
+import com.example.mytime.MainActivity.Companion.notestext
+import com.example.mytime.MainActivity.Companion.textStatus
+import com.example.mytime.MainActivity.Companion.layout
+import com.example.mytime.MainActivity.Companion.textArea
+import com.example.mytime.MainActivity.Companion.webView
 
 
 class Theme {
     companion object {
-        var windowColor:Int = 0
-        var layoutColor:Int = 0
+        var windowColor: Int = 0
         var cardViewLayoutColor: Int = 0
-        var textColor:Int = 0
-        lateinit var text:String
-        var cardViewLayoutStatusColor: Int = 0
+        var textColor: Int = 0
+        lateinit var text: String
 
 
         fun inactive(
-            activityReference: Activity,
-            layout:ConstraintLayout,
-            cardViewLayout: ConstraintLayout,
-            cardViewLayoutStatus: ConstraintLayout,
-            textStatus: TextView,
-            fab: FloatingActionButton,
-            webView: WebView
         ) {
             windowColor = Color.parseColor("#1C1519")
-            layoutColor = Color.parseColor("#1C1519")
             cardViewLayoutColor = Color.parseColor("#454545")
             fab.setImageResource(R.drawable.ic_baseline_play_arrow_24)
             textColor = Color.parseColor("#CED0CE")
             text = "Inactivo"
-            cardViewLayoutStatusColor = Color.parseColor("#454545")
             gifInactive(webView)
-            changeTheme(activityReference,layout,cardViewLayout,cardViewLayoutStatus,textStatus)
+            changeTheme()
         }
 
         fun study(
-            activityReference: Activity,
-            layout:ConstraintLayout,
-            cardViewLayout: ConstraintLayout,
-            cardViewLayoutStatus: ConstraintLayout,
-            textStatus: TextView,
-            fab: FloatingActionButton,
-            webView: WebView
-        ){
+        ) {
             windowColor = Color.parseColor("#12664f")
-            layoutColor = Color.parseColor("#12664f")
             cardViewLayoutColor = Color.parseColor("#307473")
             textColor = Color.parseColor("#c6d4ff")
             text = "Estudiando"
-            cardViewLayoutStatusColor = Color.parseColor("#307473")
             fab.setImageResource(R.drawable.ic_baseline_stop_24)
             gifStudy(webView)
-            changeTheme(activityReference,layout,cardViewLayout,cardViewLayoutStatus,textStatus)
+            changeTheme()
         }
 
         fun rest(
-            activityReference: Activity,
-            layout:ConstraintLayout,
-            cardViewLayout: ConstraintLayout,
-            cardViewLayoutStatus: ConstraintLayout,
-            textStatus: TextView,
-            fab: FloatingActionButton,
-            webView: WebView
-        ){
+        ) {
             windowColor = Color.parseColor("#13293d")
-            layoutColor = Color.parseColor("#13293d")
             cardViewLayoutColor = Color.parseColor("#2a628f")
-            cardViewLayoutStatusColor = Color.parseColor("#2a628f")
             fab.setImageResource(R.drawable.ic_baseline_stop_24)
             textColor = Color.parseColor("#4DFFF3")
             text = "Descansando"
             gifRest(webView)
-            changeTheme(activityReference,layout,cardViewLayout,cardViewLayoutStatus,textStatus)
+            changeTheme()
         }
 
         fun changeTheme(
-            activityReference: Activity,
-            layout:ConstraintLayout,
-            cardViewLayout: ConstraintLayout,
-            cardViewLayoutStatus: ConstraintLayout,
-            textStatus: TextView
         ) {
             val cx = MainActivity.anim.width / 2
             val cy = MainActivity.anim.height / 2
             val finalRadius = Math.hypot(cx.toDouble(), cy.toDouble()).toFloat()
-            val anim = ViewAnimationUtils.createCircularReveal(MainActivity.anim,
-                fab.x.toInt() + fab.width/2, fab.y.toInt() + fab.height/2, 0f, finalRadius)
+            val anim = ViewAnimationUtils.createCircularReveal(
+                MainActivity.anim,
+                fab.x.toInt() + fab.width / 2, fab.y.toInt() + fab.height / 2, 0f, finalRadius
+            )
             anim.setDuration(150)
             MainActivity.anim.visibility = View.VISIBLE
 
@@ -102,16 +78,20 @@ class Theme {
                 override fun onAnimationStart(animation: Animator?) {
                     super.onAnimationStart(animation)
                     cardViewLayout.setBackgroundColor(cardViewLayoutColor)
-                    cardViewLayoutStatus.setBackgroundColor(cardViewLayoutStatusColor)
+                    cardViewLayoutStatus.setBackgroundColor(cardViewLayoutColor)
+                    notes.setBackgroundColor(cardViewLayoutColor)
+                    notestext.setTextColor(textColor)
                     textStatus.setTextColor(textColor)
                     textStatus.setText(text)
-                    MainActivity.anim.setCardBackgroundColor(layoutColor)
+                    textArea.setTextColor(textColor)
+                    MainActivity.anim.setCardBackgroundColor(windowColor)
                 }
+
                 override fun onAnimationEnd(animation: Animator) {
                     super.onAnimationEnd(animation)
                     MainActivity.anim.visibility = View.INVISIBLE
                     activityReference.window.statusBarColor = windowColor
-                    layout.setBackgroundColor(layoutColor)
+                    layout.setBackgroundColor(windowColor)
 
                 }
             })
@@ -119,8 +99,7 @@ class Theme {
         }
 
 
-
-        fun gifStudy(webView: WebView){
+        fun gifStudy(webView: WebView) {
             val ws = webView.settings
             ws.javaScriptEnabled = true
             val file = "file:android_asset/study2.gif"
@@ -129,7 +108,7 @@ class Theme {
             webView.loadUrl(file)
         }
 
-        fun gifInactive(webView: WebView){
+        fun gifInactive(webView: WebView) {
             val ws = webView.settings
             ws.javaScriptEnabled = true
             val file = "file:android_asset/inactive.gif"
@@ -137,7 +116,8 @@ class Theme {
             ws.useWideViewPort = true;
             webView.loadUrl(file)
         }
-        fun gifRest(webView: WebView){
+
+        fun gifRest(webView: WebView) {
             val ws = webView.settings
             ws.javaScriptEnabled = true
             val file = "file:android_asset/pequeño.gif"

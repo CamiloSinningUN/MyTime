@@ -15,6 +15,8 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.WindowManager
 import android.webkit.WebView
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -36,6 +38,9 @@ class MainActivity : AppCompatActivity() {
         lateinit var restArray: ArrayList<LinearProgressIndicator>
         lateinit var fab: FloatingActionButton
         lateinit var anim: CardView
+        lateinit var textArea: EditText
+        lateinit var notes: LinearLayout
+        lateinit var notestext: TextView
         lateinit var activityReference: Activity
 
         fun sendNotification(context: Context,notificationTitle:String,notificationText:String){
@@ -88,6 +93,9 @@ class MainActivity : AppCompatActivity() {
         linearIndicator = findViewById(R.id.linearProgressIndicator)
         textStatus = findViewById(R.id.textView)
         cardViewLayoutStatus = findViewById(R.id.statusCardView)
+        notes = findViewById(R.id.notes)
+        notestext = findViewById(R.id.textView2)
+        textArea = findViewById(R.id.shipper_field)
         anim = findViewById(R.id.anim)
         activityReference = this
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
