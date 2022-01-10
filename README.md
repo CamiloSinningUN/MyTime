@@ -1,6 +1,6 @@
 # MyTime
 
-Android app to help you to organize your time time while studing using the pomodoro method
+Android app to help you to organize your time time while studing using the pomodoro method.
 
 ## Getting Started 🚀
 
