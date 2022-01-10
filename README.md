@@ -26,4 +26,4 @@ To deploy the project run it with android studio as a regular project.
 
 * **Camilo Sinning** - *Programmer - designer* - [CamiloSinningUN](https://github.com/CamiloSinningUN)
 
-See also the list of [contributors](https://github.com/CamiloSinningUN/Devocional-app/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/CamiloSinningUN/MyTime/contributors) who participated in this project.
